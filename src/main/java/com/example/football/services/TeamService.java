@@ -3,6 +3,7 @@ package com.example.football.services;
 import com.example.football.entities.dto.team.CreateTeamDTO;
 import com.example.football.entities.dto.team.UpdateTeamDTO;
 import com.example.football.entities.models.Team;
+import com.example.football.exception.domain.CustomException;
 import com.example.football.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class TeamService {
 
     public Team getById(Integer id) {
         return teamRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Team not found with id " + id));
+                .orElseThrow(() -> new CustomException("Team not found with id " + id));
     }
 
     public List<Team> getAll() {
